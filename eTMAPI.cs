@@ -13,6 +13,7 @@ namespace eTMAPI
         public static uint[] processIDs;
         public static string snresult;
         private static string usage;
+        
         public static string Info;
         public static PS3TMAPI.ConnectStatus connectStatus;
         public static string Status;
@@ -105,6 +106,32 @@ namespace eTMAPI
 
 
         /// <summary>
+        /// Disconnects from the target PS3.
+        /// </summary>
+        public static void DisconnectTarget()
+        {
+            PS3TMAPI.Disconnect(0);
+        }
+
+
+        /// <summary>
+        /// Forces the PS3 to disconnect.
+        /// </summary>
+        public static void DisconnectTargetWithForce()
+        {
+            PS3TMAPI.ForceDisconnect(0);
+        }
+
+        /// <summary>
+        /// Gets the current API version
+        /// </summary>
+        /// <param name="Output"></param>
+        public static void GetAPIVersion(string Output)
+        {
+            PS3TMAPI.GetAPIVersion(out Output);
+        }
+
+        /// <summary>
         /// Kills current process.
         /// </summary>
         public static void KillProcess()
@@ -142,8 +169,8 @@ namespace eTMAPI
         {
             Status = Convert.ToString(PS3TMAPI.GetConnectStatus(0, out connectStatus, out usage));
         }
-        
-                /// <summary>
+
+        /// <summary>
         /// Shuts down the PS3, write true in the parameter if you want to force the PS3 to shutdown, if not, write 'false'.
         /// </summary>
         /// <param name="Force_PS3_To_Shutdown"></param>
@@ -174,7 +201,5 @@ namespace eTMAPI
         {
             PS3TMAPI.UnmapFileSystem();
         }
-
-
     }
 }
