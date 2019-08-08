@@ -142,6 +142,39 @@ namespace eTMAPI
         {
             Status = Convert.ToString(PS3TMAPI.GetConnectStatus(0, out connectStatus, out usage));
         }
+        
+                /// <summary>
+        /// Shuts down the PS3, write true in the parameter if you want to force the PS3 to shutdown, if not, write 'false'.
+        /// </summary>
+        /// <param name="Force_PS3_To_Shutdown"></param>
+        public static void PowerOffTarget(bool Force_PS3_To_Shutdown)
+        {
+            PS3TMAPI.PowerOff(0, Force_PS3_To_Shutdown);
+        }
+
+        public static void PowerOnTarget()
+        {
+            PS3TMAPI.PowerOn(0);
+        }
+
+
+        /// <summary>
+        /// Maps the PS3 filesystem on your HDD, type 'C' with the apostrophes if you want to save it into the C drive
+        /// </summary>
+        /// <param name="DiskDriveLetter"></param>
+        public static void MapFilesystem(char DiskDriveLetter)
+        {
+            PS3TMAPI.MapFileSystem(DiskDriveLetter);
+        }
+
+        /// <summary>
+        /// Unmaps the PS3 filesystem from your HDD
+        /// </summary>
+        public static void UnmapFilesystem()
+        {
+            PS3TMAPI.UnmapFileSystem();
+        }
+
 
     }
 }
